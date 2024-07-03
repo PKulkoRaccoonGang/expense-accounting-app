@@ -1,0 +1,31 @@
+.spend-form {
+    >* {
+        box-sizing: border-box;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        margin: 0 -10px;
+
+        select,
+        button,
+        input {
+            max-width: 100%;
+            width: 100%;
+            min-height: 36px;
+            padding: 4px 8px;
+            min-width: 1px !important;
+        }
+
+        .input-wrapper {
+            padding: 0 10px;
+            width: 50%;
+
+            &.__wide {
+                width: 100%;
+            }
+        }
+    }
+}
