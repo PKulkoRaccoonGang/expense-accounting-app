@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react'
 import './style.scss'
 
@@ -5,7 +6,7 @@ function Form({spends, updateSpends}) {
     const [items, setItems] = useState([])
     const [category, setCategory] = useState('')
     const [money, setMoney] = useState(0)
-    
+
     useEffect(() => {
         setItems(spends)
     }, [spends])
@@ -64,5 +65,15 @@ function Form({spends, updateSpends}) {
         </div>
     )
 }
+
+Form.propTypes = {
+    spends: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            spent: PropTypes.number.isRequired,
+        })
+    ).isRequired,
+    updateSpends: PropTypes.func.isRequired,
+};
 
 export default Form

@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     setSpends(data)
-  }, [data])
+  }, [])
 
   function updateSpends(updatedSpends) {
     setSpends(updatedSpends)
