@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react'
 import './style.scss'
 
-function Form({spends, updateSpends}) {
+function Form({categories, updateSpends}) {
     const [items, setItems] = useState([])
     const [category, setCategory] = useState('')
     const [money, setMoney] = useState(0)
 
     useEffect(() => {
-        setItems(spends)
-    }, [spends])
+        setItems(categories)
+    }, [categories])
 
 
     function onCategoryChange(e) {
@@ -23,24 +23,21 @@ function Form({spends, updateSpends}) {
     function onFormSubmit(e) {
         e.preventDefault()
 
-        if (category === '') return
+        if (category === '' || money === 0) return
 
-        const updatedItems = items.map(item => {
-            if (String(item.id) === String(category)) {
-                const updatedItem = { ...item, spent: item.spent + money };
-                return updatedItem;
-            } else {
-                return item;
-            }
-        });
+        const newItem = {
+            "amount": `${money}`,
+            "category": `${category}`,
+            "time_created": `${new Date()}`
+        }
 
-        updateSpends(updatedItems);
+        updateSpends(newItem);
         setMoney(0);
     }
 
     const options = items.map(item => {
         return (
-            <option value={item.id} key={item.id}>{item.id}</option>
+            <option value={item} key={item}>{item}</option>
         )
     })
 
@@ -67,12 +64,7 @@ function Form({spends, updateSpends}) {
 }
 
 Form.propTypes = {
-    spends: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-            spent: PropTypes.number.isRequired,
-        })
-    ).isRequired,
+    categories: PropTypes.array.isRequired,
     updateSpends: PropTypes.func.isRequired,
 };
 

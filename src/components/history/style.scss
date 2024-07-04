@@ -1,0 +1,51 @@
+.history-wrapper {
+    margin: 40px 0 0;
+
+    h2 {
+        margin: 0 0 24px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 24px 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column-reverse;
+
+        li {
+            position: relative;
+            width: 100%;
+            // padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #3b3b3b;
+            border-radius: 8px;
+            margin: 0 0 8px;
+
+            &:hover {
+                .delete-spend {
+                    display: inline-block;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.amount {
+    color: #fd4646;
+}
+
+.spending-body {
+    padding: 8px;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-spend {
+    min-width: 30px;
+    height: 100%;
+    display: none;
+    visibility: hidden;
+}
