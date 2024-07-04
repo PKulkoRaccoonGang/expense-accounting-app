@@ -11,29 +11,25 @@ function Graph({spends}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        calculateTotalSpends()
+      const totalSpent = {}
+
+      spends.forEach(expense => {
+        const category = expense.category;
+        const amount = parseFloat(expense.amount);
+
+        if (!totalSpent[category]) {
+          totalSpent[category] = 0;
+        }
+        totalSpent[category] += amount;
+      });
+
+      const summarizedExpenses = Object.keys(totalSpent).map(category => ({
+        category: category,
+        totalSpent: totalSpent[category]
+      }));
+
+      setItems(summarizedExpenses)
       }, [spends])
-
-      function calculateTotalSpends() {
-        const totalSpent = {}
-
-        spends.forEach(expense => {
-          const category = expense.category;
-          const amount = parseFloat(expense.amount);
-
-          if (!totalSpent[category]) {
-            totalSpent[category] = 0;
-          }
-          totalSpent[category] += amount;
-        });
-
-        const summarizedExpenses = Object.keys(totalSpent).map(category => ({
-          category: category,
-          totalSpent: totalSpent[category]
-        }));
-        
-        setItems(summarizedExpenses)
-      }
 
     const chartData = {
         labels: items.map(item => item.category),

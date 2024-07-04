@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react'
 import './style.scss'
 import { PDFDownloadLink } from '@react-pdf/renderer';
@@ -38,6 +39,10 @@ function History({spends}) {
 
         
     )
+}
+
+History.propTypes = {
+    spends: PropTypes.array.isRequired,
 }
 
 export default History

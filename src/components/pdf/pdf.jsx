@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react'
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 import './style.scss'
@@ -36,7 +37,7 @@ function Pdf({spends}) {
 
     const list = items.map(item => {
         return (
-        <View style={styles.section}>
+        <View style={styles.section} key={item.time_created}>
             <Text style={styles.text}>{item.category}</Text>
             <Text style={styles.text}>-{item.amount}</Text>
         </View>
@@ -48,12 +49,16 @@ function Pdf({spends}) {
         <Document>
             <Page size="A4" style={styles.page}>
                 <View>
-				    <Text style={styles.title}>Spends list:</Text>
-			    </View>
+                    <Text style={styles.title}>Spends list:</Text>
+                </View>
                 {list}
             </Page>
         </Document>
     )
+}
+
+Pdf.propTypes = {
+    spends: PropTypes.array.isRequired,
 }
 
 export default Pdf

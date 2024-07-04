@@ -8,7 +8,6 @@ import Graph from './components/graph/graph'
 import mockData from './mockData'
 import categories from './categories'
 import History from './components/history/history'
-import Pdf from './components/pdf/pdf'
 
 function App() {
   const [spends, setSpends] = useState([])
