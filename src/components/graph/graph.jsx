@@ -3,6 +3,7 @@ import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './style.scss'
 import { useState, useEffect } from 'react';
+import backgroundColors from './colors';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -18,7 +19,7 @@ function Graph({spends}) {
         datasets: [
           {
             data: items.map(item => item.spent),
-            backgroundColor: items.map(item => item.backgroundColor),
+            backgroundColor: backgroundColors.map(bgColor => bgColor),
           },
         ],
       };

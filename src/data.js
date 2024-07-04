@@ -1,16 +1,43 @@
 const data = [
     {
         id:              'Food',
-        spent:           10,
-        backgroundColor: '#FF6384',
+        spent:           2000,
     },{
-        id:              'Drinks',
-        spent:           10,
-        backgroundColor: '#36A2EB',
+        id:              'Rent',
+        spent:           0,
     },{
         id:              'Komunalka',
-        spent:           10,
-        backgroundColor: '#FFCE56',
+        spent:           3200,
+    },{
+        id:              'Internet & TV',
+        spent:           400,
+    },{
+        id:              'Mobile',
+        spent:           200,
+    },{
+        id:              'Medicine',
+        spent:           478,
+    },{
+        id:              'Taxi',
+        spent:           0,
+    },{
+        id:              'Entertainment',
+        spent:           600,
+    },{
+        id:              'Home stuff',
+        spent:           340,
+    },{
+        id:              'Study',
+        spent:           0,
+    },{
+        id:              'Car',
+        spent:           700,
+    },{
+        id:              'Shopping',
+        spent:           1500,
+    },{
+        id:              'Other',
+        spent:           99,
     },
 ]
 
