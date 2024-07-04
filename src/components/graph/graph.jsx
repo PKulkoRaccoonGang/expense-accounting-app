@@ -11,14 +11,31 @@ function Graph({spends}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        setItems(spends)
-    }, [spends])
+      const totalSpent = {}
+
+      spends.forEach(expense => {
+        const category = expense.category;
+        const amount = parseFloat(expense.amount);
+
+        if (!totalSpent[category]) {
+          totalSpent[category] = 0;
+        }
+        totalSpent[category] += amount;
+      });
+
+      const summarizedExpenses = Object.keys(totalSpent).map(category => ({
+        category: category,
+        totalSpent: totalSpent[category]
+      }));
+
+      setItems(summarizedExpenses)
+      }, [spends])
 
     const chartData = {
-        labels: items.map(item => item.id),
+        labels: items.map(item => item.category),
         datasets: [
           {
-            data: items.map(item => item.spent),
+            data: items.map(item => item.totalSpent),
             backgroundColor: backgroundColors.map(bgColor => bgColor),
           },
         ],

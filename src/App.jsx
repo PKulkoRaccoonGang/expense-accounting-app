@@ -4,23 +4,29 @@ import './styles/normalize.scss'
 import './styles/base.scss'
 import Form from './components/form/form'
 import Graph from './components/graph/graph'
-import data from './data'
+// import data from './data'
+import mockData from './mockData'
+import categories from './categories'
+import History from './components/history/history'
 
 function App() {
   const [spends, setSpends] = useState([])
 
   useEffect(() => {
-    setSpends(data)
+    setSpends(mockData.expenses)
+
   }, [])
 
-  function updateSpends(updatedSpends) {
+  function updateSpends(newItem) {
+    const updatedSpends = [...spends, newItem]
     setSpends(updatedSpends)
   }
 
   return (
     <>
       <Graph spends={spends}></Graph>
-      <Form spends={spends} updateSpends={updateSpends}></Form>
+      <Form categories={categories} updateSpends={updateSpends}></Form>
+      <History spends={spends}></History>
     </>
   )
 }
