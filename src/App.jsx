@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './App.scss'
+import './styles/normalize.scss'
+import './styles/base.scss'
 import Form from './components/form/form'
 import Graph from './components/graph/graph'
 import data from './data'
